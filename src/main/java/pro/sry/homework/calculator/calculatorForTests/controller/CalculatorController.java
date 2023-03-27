@@ -1,5 +1,7 @@
 package pro.sry.homework.calculator.calculatorForTests.controller;
 
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import pro.sry.homework.calculator.calculatorForTests.exceptions.DivideByZeroException;
@@ -9,12 +11,12 @@ import pro.sry.homework.calculator.calculatorForTests.services.CalculatorService
 @RequestMapping("/calculator")
 
 public class CalculatorController {
+    @Autowired
     private final CalculatorService calculatorService;
 
     public CalculatorController(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
     }
-
 
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     @ExceptionHandler(DivideByZeroException.class)
